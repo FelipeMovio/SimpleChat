@@ -1,6 +1,7 @@
 package com.felipemovio.chat.services;
 
 import com.felipemovio.chat.DTO.request.RegisterRequestDTO;
+import com.felipemovio.chat.DTO.response.RegisterResponseDTO;
 import com.felipemovio.chat.model.Role;
 import com.felipemovio.chat.model.UserEntity;
 import com.felipemovio.chat.repository.UserRepository;
@@ -24,7 +25,7 @@ public class AuthService implements UserDetailsService {
     private PasswordEncoder passwordEncoder;
 
 
-    public void register(RegisterRequestDTO dto) {
+    public RegisterResponseDTO register(RegisterRequestDTO dto) {
         if (userRepository.findByEmail(dto.getEmail()).isPresent()) {
             throw new RuntimeException("E-mail já cadastrado!");
         }
@@ -46,6 +47,7 @@ public class AuthService implements UserDetailsService {
 
         UserEntity saved = userRepository.save(newUser);
 
+        return new RegisterResponseDTO(saved.getId(), saved.getNome(), saved.getIdade(), saved.getEmail());
     }
 
 
