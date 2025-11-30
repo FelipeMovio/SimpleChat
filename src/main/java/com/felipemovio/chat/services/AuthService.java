@@ -5,6 +5,7 @@ import com.felipemovio.chat.DTO.response.RegisterResponseDTO;
 import com.felipemovio.chat.model.Role;
 import com.felipemovio.chat.model.UserEntity;
 import com.felipemovio.chat.repository.UserRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,6 +17,7 @@ import java.util.Set;
 
 
 @Service
+@AllArgsConstructor
 public class AuthService implements UserDetailsService {
 
     @Autowired

@@ -9,6 +9,7 @@ import com.felipemovio.chat.model.UserEntity;
 import com.felipemovio.chat.security.TokenConfig;
 import com.felipemovio.chat.services.AuthService;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,11 +17,13 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Map;
 
 
 @RestController
 @RequestMapping("/api/auth")
+@AllArgsConstructor
 public class AuthController {
 
     @Autowired
@@ -33,9 +36,13 @@ public class AuthController {
     private TokenConfig tokenConfig;
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody @Valid RegisterRequestDTO dto) {
+    public ResponseEntity<Map<String, Object>> register(@RequestBody @Valid RegisterRequestDTO dto) {
         RegisterResponseDTO user = authService.register(dto);
-        return ResponseEntity.ok(Map.of("message" ,"Criado com sucesso "));
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Usuário registrado com sucesso!");
+        response.put("data", user);
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/login")
