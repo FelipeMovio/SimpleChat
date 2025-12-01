@@ -20,6 +20,9 @@ public class TokenConfig {
     @Value("${jwt.secret}")
     private String secret;
 
+    @Value("${jwt.expiration}")
+    private Long expiration;
+
     public String generateToken(UserEntity user) {
         Algorithm algorithm = Algorithm.HMAC256(secret);
 
@@ -27,7 +30,7 @@ public class TokenConfig {
                 .withClaim("userId", user.getId())
                 .withClaim("roles", user.getRoles().stream().map(Enum::name).toList())
                 .withSubject(user.getEmail())
-                .withExpiresAt(Instant.now().plusSeconds(86400)) // 24h duração do token
+                .withExpiresAt(Instant.now().plusSeconds(expiration)) // 24h duração do token
                 .withIssuedAt(Instant.now())
                 .sign(algorithm);
     }
