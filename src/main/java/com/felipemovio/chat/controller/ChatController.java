@@ -1,6 +1,6 @@
 package com.felipemovio.chat.controller;
 
-import com.felipemovio.chat.DTO.ChatMessageDTO;
+import com.felipemovio.chat.DTO.ChatMessageInputDTO;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
@@ -10,7 +10,7 @@ public class ChatController {
 
     @MessageMapping("/send")
     @SendTo("/topic/messages")
-    public ChatMessageDTO send(ChatMessageDTO message) {
+    public ChatMessageInputDTO send(ChatMessageInputDTO message) {
         return message;
     }
 }
