@@ -1,4 +1,4 @@
-package com.felipemovio.chat.DTO;
+package com.felipemovio.chat.DTO.request;
 
 import com.felipemovio.chat.model.UserEntity;
 import lombok.Data;
