@@ -1,14 +1,14 @@
 package com.felipemovio.chat.DTO.response;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 
-@Data
-@Builder
 @AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
+@Builder
 public class RegisterResponseDTO {
     private Long id;
     private String nome;

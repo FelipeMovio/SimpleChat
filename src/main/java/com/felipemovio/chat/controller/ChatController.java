@@ -11,7 +11,7 @@ public class ChatController {
 
     @MessageMapping("/send")
     @SendTo("/topic/messages")
-    public ChatMessageOutputDTO send(ChatMessageInputDTO message) {
-        return ;
+    public ChatMessageOutputDTO send(ChatMessageInputDTO inputDTO) {
+        return new ChatMessageOutputDTO(inputDTO.getUser() + ":" + inputDTO.getMessage());
     }
 }

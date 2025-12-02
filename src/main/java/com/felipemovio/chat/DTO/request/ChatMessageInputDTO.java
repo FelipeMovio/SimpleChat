@@ -1,9 +1,15 @@
 package com.felipemovio.chat.DTO.request;
 
 import com.felipemovio.chat.model.UserEntity;
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
 public class ChatMessageInputDTO {
     private UserEntity user;
     private String message;

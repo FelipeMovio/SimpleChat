@@ -1,10 +1,11 @@
 package com.felipemovio.chat.DTO.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
-@Data
 @AllArgsConstructor
+@NoArgsConstructor
+@Setter
+@Getter
 public class LoginResponseDTO {
     private String token;
 }
