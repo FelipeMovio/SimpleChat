@@ -5,6 +5,7 @@ import com.felipemovio.chat.DTO.response.ChatMessageOutputDTO;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.util.HtmlUtils;
 
 @Controller
 public class ChatController {
@@ -12,6 +13,6 @@ public class ChatController {
     @MessageMapping("/send")
     @SendTo("/topic/messages")
     public ChatMessageOutputDTO send(ChatMessageInputDTO inputDTO) {
-        return new ChatMessageOutputDTO(inputDTO.getUser() + ":" + inputDTO.getMessage());
+        return new ChatMessageOutputDTO(HtmlUtils.htmlEscape(inputDTO.getUser() + ":" + inputDTO.getMessage()));
     }
 }
