@@ -7,12 +7,17 @@ import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.util.HtmlUtils;
 
+import java.security.Principal;
+
 @Controller
 public class ChatController {
 
     @MessageMapping("/send")
     @SendTo("/topic/messages")
-    public ChatMessageOutputDTO send(ChatMessageInputDTO inputDTO) {
-        return new ChatMessageOutputDTO(HtmlUtils.htmlEscape(inputDTO.getUser() + ":" + inputDTO.getMessage()));
+    public ChatMessageOutputDTO send(ChatMessageInputDTO input, Principal principal) {
+
+        String username = principal.getName();
+
+        return new ChatMessageOutputDTO(username + ": " + input.getMessage());
     }
 }
