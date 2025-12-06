@@ -1,4 +1,4 @@
 package com.felipemovio.chat.DTOs;
 
-public record ChatOutputDTO() {
+public record ChatOutputDTO(String message) {
 }

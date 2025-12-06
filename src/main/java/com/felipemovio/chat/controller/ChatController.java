@@ -1,5 +1,6 @@
 package com.felipemovio.chat.controller;
 
+import com.felipemovio.chat.DTOs.ChatInputDTO;
 import com.felipemovio.chat.DTOs.ChatOutputDTO;
 import org.springframework.stereotype.Controller;
 
